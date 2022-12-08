@@ -3,11 +3,15 @@ import sqlite3
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
+db_connect_count = 0
+
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
+    global db_connect_count
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    db_connect_count += 1
     return connection
 
 # Function to get a post using its ID
@@ -36,9 +40,9 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      return render_template('404.html'), 404
+        return render_template('404.html'), 404
     else:
-      return render_template('post.html', post=post)
+        return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
@@ -57,7 +61,7 @@ def create():
         else:
             connection = get_db_connection()
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
-                         (title, content))
+                        (title, content))
             connection.commit()
             connection.close()
 
@@ -65,6 +69,24 @@ def create():
 
     return render_template('create.html')
 
+@app.route('/status')
+def status():
+    response = app.response_class(
+        response=json.dumps({"result":"OK - healthy"}),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@app.route('/metrics')
+def metrics():
+    response = app.response_class(
+        response=json.dumps({"status":"success","db_connection_count":db_connect_count,"data":{"UserCount":140,"UserCountActive":23}}),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
 # start the application on port 3111
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port='3111')
+    app.run(host='0.0.0.0', debug=True, port='3111')

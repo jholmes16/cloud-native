@@ -1,0 +1,5 @@
+# Ignore techtrends environment
+techtrends
+
+# Ignore the database
+database.db

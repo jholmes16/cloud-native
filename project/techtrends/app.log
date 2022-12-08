@@ -1,0 +1,9 @@
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.1.126:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:17:50] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:17:50] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:app:A new article titled Test2 was created
+INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:18:06] "[32mPOST /create HTTP/1.1[0m" 302 -
+INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:18:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:18:06] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -

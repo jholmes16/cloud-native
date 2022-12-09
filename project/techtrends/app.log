@@ -16,3 +16,9 @@ INFO:app:A new article titled Testing3 was created
 INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:22:49] "[32mPOST /create HTTP/1.1[0m" 302 -
 INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:22:49] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:192.168.1.126 - - [08/Dec/2022 13:22:49] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.1.126:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:192.168.1.126 - - [09/Dec/2022 09:41:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:192.168.1.126 - - [09/Dec/2022 09:41:16] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:192.168.1.126 - - [09/Dec/2022 09:41:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
